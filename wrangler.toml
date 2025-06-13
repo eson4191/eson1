@@ -1,0 +1,7 @@
+name = "eson1"          # 必填，Worker 名称
+main = "_worker.js"    # 必填，入口文件
+compatibility_date = "2025-06-12"  # 建议保留
+
+[secrets]              # Workers 加密变量（若需要）
+UUID = "uuid-secret"   # 变量名需与代码一致
+TROJAN_PASSWORD = "password-secret"
