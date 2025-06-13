@@ -1,0 +1,22 @@
+name: Deploy Cloudflare Worker
+
+on:
+  workflow_dispatch:  # 手动触发，方便调试
+    inputs:
+      token:
+        description: 'API Token'
+        required: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Worker
+        uses: cloudflare/wrangler-action@3.0.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workers: _worker.js  # 对应wrangler.toml中的main字段
